@@ -50,3 +50,14 @@ func newResponse(id string, r *http.Response) *response {
 		Headers:    r.Header,
 	}
 }
+
+func newErrorResponse(id string, err error) *response {
+	return &response{
+		Id:         id,
+		StatusCode: 500,
+		Body: map[string]interface{}{
+			"batchApiError": err.Error(),
+		},
+		Headers: nil,
+	}
+}

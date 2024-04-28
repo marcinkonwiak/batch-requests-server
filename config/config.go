@@ -30,6 +30,7 @@ func LoadConfig() (config *Config) {
 	viper.SetDefault("port", 1323)
 	viper.SetDefault("allowed_paths", []string{})
 	viper.SetDefault("base_url", "http://localhost:8080")
+	viper.SetDefault("max_concurrent_requests", 5)
 
 	err := viper.ReadInConfig()
 	if err != nil {
