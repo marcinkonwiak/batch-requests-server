@@ -9,8 +9,9 @@ import (
 
 func (h *Handler) batchRequestHandler(c echo.Context) error {
 	b := new(batchRequest)
+
 	if err := c.Bind(b); err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		return h.processBindingError(err)
 	}
 
 	if err := c.Validate(b); err != nil {
