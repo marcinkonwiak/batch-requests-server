@@ -3,7 +3,6 @@
 API for combining multiple requests into a single batch request.
 
 ### Example Request
-
 ```http request
 POST /batch HTTP/1.1
 Content-Type: application/json
@@ -32,7 +31,6 @@ Host: localhost:1323
 ```
 
 ### Example Response
-
 ```json
 {
   "responses": [
@@ -73,7 +71,6 @@ Host: localhost:1323
 ```
 
 ### Example Configuration
-
 ```yaml
 port: 1323
 base_url: http://localhost:8080
