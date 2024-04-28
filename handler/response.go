@@ -32,10 +32,15 @@ func newResponse(id string, r *http.Response) *response {
 	var body interface{}
 
 	b, err := io.ReadAll(r.Body)
-	if err != nil || json.Unmarshal(b, &body) != nil {
+
+	if err != nil {
 		body = map[string]interface{}{
 			"error": "Error parsing response body",
 		}
+	}
+
+	if err = json.Unmarshal(b, &body); err != nil {
+		body = string(b)
 	}
 
 	return &response{

@@ -30,7 +30,6 @@ func (h *Handler) batchRequestHandler(c echo.Context) error {
 	}
 
 	br := newBatchResponse(&responses)
-
 	return c.JSON(200, br)
 }
 

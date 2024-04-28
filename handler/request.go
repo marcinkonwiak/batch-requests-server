@@ -6,7 +6,7 @@ type batchRequest struct {
 
 type request struct {
 	Id      string            `json:"id" validate:"required"`
-	Path    string            `json:"path" validate:"required,relativeUri"`
+	Path    string            `json:"path" validate:"required,relativeUrl"`
 	Method  string            `json:"method" validate:"required,oneof=GET POST PUT PATCH DELETE HEAD OPTIONS TRACE CONNECT"`
 	Body    interface{}       `json:"body,omitempty"`
 	Headers map[string]string `json:"headers,omitempty"`

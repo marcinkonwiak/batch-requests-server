@@ -13,7 +13,7 @@ type Validator struct {
 
 func NewValidator() *Validator {
 	v := &Validator{validator: validator.New()}
-	_ = v.validator.RegisterValidation("relativeUri", isRelativeUri)
+	_ = v.validator.RegisterValidation("relativeUrl", isRelativeUrl)
 	return v
 }
 
@@ -24,7 +24,15 @@ func (rq *Validator) Validate(i interface{}) error {
 	return nil
 }
 
-func isRelativeUri(fl validator.FieldLevel) bool {
+func isRelativeUrl(fl validator.FieldLevel) bool {
+	if fl.Field().String()[0] != '/' {
+		return false
+	}
+
 	u, err := url.Parse(fl.Field().String())
-	return err == nil && u.IsAbs() == false
+	if err != nil {
+		return false
+	}
+
+	return u.Scheme == "" && u.Host == ""
 }
