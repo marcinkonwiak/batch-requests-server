@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"github.com/labstack/echo/v4"
+	"github.com/spf13/viper"
 	"net/http"
 )
 
@@ -41,8 +42,8 @@ func makeRequest(c *http.Client, r request) (*response, error) {
 			return nil, err
 		}
 	}
-	baseUrl := "https://662d27620547cdcde9e01582.mockapi.io"
 
+	baseUrl := viper.GetString("base_url")
 	req, err := http.NewRequest(r.Method, baseUrl+r.Path, &body)
 	if err != nil {
 		return nil, err
