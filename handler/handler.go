@@ -29,6 +29,6 @@ func (h *Handler) processBindingError(err error) error {
 		return echo.NewHTTPError(http.StatusBadRequest, msg)
 
 	default:
-		return echo.NewHTTPError(http.StatusBadRequest, "Invalid request body")
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 }

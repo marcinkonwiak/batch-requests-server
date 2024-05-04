@@ -3,9 +3,10 @@ package handler
 import (
 	"bytes"
 	"encoding/json"
+	"net/http"
+
 	"github.com/labstack/echo/v4"
 	"github.com/spf13/viper"
-	"net/http"
 )
 
 func (h *Handler) batchRequestHandler(c echo.Context) error {
